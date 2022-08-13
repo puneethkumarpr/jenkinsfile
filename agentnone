@@ -33,7 +33,7 @@ pipeline {
      stage ('TESTING2')   { 
         agent { label 'node1' }
         steps {
-        sh ' echo "this is testng 2"
+        sh ' echo "this is testng 2" '
         sh " ls -lrt "
         sh "  echo ' pipeline jobs ' "
                  
