@@ -19,7 +19,6 @@ pipeline {
           echo "deploying .."
           timedatectl
           du -sh
-          top
                '''
               }
                  }
