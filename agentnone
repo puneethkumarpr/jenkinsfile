@@ -1,0 +1,45 @@
+pipeline { 
+  agent none
+  stages { 
+      stage ('BUILD') {
+        agent {label 'node1'}
+          steps { 
+       
+          echo "hi how are you"
+          sh 'free -h'
+          sh 'sleep 4' 
+          
+          }
+     }
+     stage ('DEPLOY') {
+     agent {label 'node2'}
+     steps { 
+          sh ''' 
+          #!/bin/bash
+          echo "deploying .."
+          timedatectl
+          du -sh
+          top
+               '''
+              }
+                 }
+      stage ('TESTING1') {
+        agent {label 'node2'}
+        steps {
+        sh ' echo "this is testing stage" '
+        sh 'sleep 3'
+               }
+               }
+     stage ('TESTING2')   { 
+        agent { label 'node1' }
+        steps {
+        sh ' echo "this is testng 2"
+        sh " ls -lrt "
+        sh "  echo ' pipeline jobs ' "
+                 
+                  }
+     
+  }
+  
+
+}
