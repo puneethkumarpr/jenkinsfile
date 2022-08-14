@@ -1,0 +1,29 @@
+pipeline {
+    parameters {
+        string(name: 'AGENT', description: 'Enter the agent to run')
+    }
+    agent any 
+    stages {
+        stage('Build') {
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh '''
+                        #!/bin/bash 
+                        pwd 
+                        ls
+                        echo "This is a BUILD stage"
+                        sleep 3
+                        exit 1
+                    ''' 
+                }     
+            }
+        }
+
+        stage('DEPLOY') {
+            steps {
+                echo "This is a DEPLOY stage"
+                sh 'sleep 3'
+            }
+        }
+    }
+}
