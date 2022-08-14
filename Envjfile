@@ -4,11 +4,13 @@ pipeline {
         NAME = 'PUNEETH KUMAR'
         CITY = 'BANGALORE'
         CLASS = 'JENKINS PIPELINE' 
+    
+    }
     parameters {
         string (name:'field' , description:'this is parameters section' , defaultValue:'ABC')
 
     }
-    }
+
     stages {
         stage ('BUILD') {
             steps {
@@ -20,7 +22,7 @@ pipeline {
                 echo "$CLASS"
             '''
             echo "name=${env.NAME}"
-            
+            echo "fieldname=${params.field}"
             }   
         }
         stage ('DEPLOY') {
