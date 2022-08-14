@@ -4,6 +4,10 @@ pipeline {
         NAME = 'PUNEETH KUMAR'
         CITY = 'BANGALORE'
         CLASS = 'JENKINS PIPELINE' 
+    parameters {
+        string (name:'field' , description:'this is parameters section' , defaultValue:'ABC')
+
+    }
     }
     stages {
         stage ('BUILD') {
