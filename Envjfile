@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    environment {
+        NAME = 'PUNEETH KUMAR'
+        CITY = 'BANGALORE'
+        CLASS = 'JENKINS PIPELINE' 
+    }
+    stages {
+        stage ('BUILD') {
+            steps {
+               sh '''
+                pwd
+                ls
+                du -sh
+                free -h
+            '''
+            echo "name=${env.NAME}"
+            }
+        }
+    }
+
+    
+}
