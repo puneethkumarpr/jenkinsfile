@@ -15,6 +15,20 @@ pipeline {
                 free -h
             '''
             echo "name=${env.NAME}"
+            
+            }   
+        }
+        stage ('DEPLOY') {
+            environment {
+                DEPLOY="this is from deploy"
+            }
+            steps {
+                sh 'pwd'
+                sh 'ls -lrt'
+                sh ' echo "$DEPLOY" '
+        
+                
+        
             }
         }
     }
