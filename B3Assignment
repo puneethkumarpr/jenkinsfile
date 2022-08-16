@@ -1,35 +1,32 @@
 pipeline {
-    agent any
-    parameters {
-  choice choices: ['A ', 'B', 'C'], description: 'select by choices', name: 'ABC'
-}
-
-    stages {
-        stage('A') {
+  agent any
+  parameters {
+    choice(choices: ['A', 'B', 'C'], description: 'Select the stage I want to run', name: 'running_stage')
+  }
+   stages {
+    stage ('A') {
+    when {
+         expression { params.running_stage == 'A' }
+     }
+      steps {
+         echo 'this is A stage'
+            }
+          }  
+    stage ('B') {
+      when {
+         expression { params.running_stage == 'B' }
+      }
             steps {
-                script {
-                if (params.ABC == 'A') {
-                
-                echo " stage A is running"
+              echo 'this is B stage'
                 }
-                } 
-            }
+              } 
+       stage ('C') {
+        when {
+         expression { params.running_stage == 'C' }
         }
-    
-   
-        stage('B') {
             steps {
-                echo "stage B is running"
-                
-            }
-        }
-    
-    
-        stage('C') {
-            steps {
-                echo "stage C is running"
-                
-            }
-        }
+                  echo 'this is C stage'
+                }
+              }
+      } 
     }
-}
