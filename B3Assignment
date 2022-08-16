@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    parameters {
+  choice choices: ['A ', 'B', 'C'], description: 'select by choices', name: 'ABC'
+}
+
+    stages {
+        stage('A') {
+            steps {
+                echo " stage A is running"
+                
+            }
+        }
+    }
+    stages {
+        stage('B') {
+            steps {
+                echo "stage B is running"
+                
+            }
+        }
+    }
+    stages {
+        stage('C') {
+            steps {
+                echo "stage C is running"
+                
+            }
+        }
+    }
+}
