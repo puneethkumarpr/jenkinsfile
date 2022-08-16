@@ -7,7 +7,10 @@ pipeline {
     stages {
         stage('A') {
             steps {
+                if (params.ABC == 'A') {
+                
                 echo " stage A is running"
+                }
                 
             }
         }
