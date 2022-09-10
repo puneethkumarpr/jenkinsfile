@@ -21,7 +21,7 @@ pipeline{
 		
 		stage("RUN-CONTAINER"){
 			steps{
-				echo "Running container"
+				echo "Runing container"
 				sh 'docker run -it -d -p 8080:8080 puneethkumarpr/puneeth-maven-tomcat'
 				
 			}
